@@ -5,22 +5,24 @@ import { createClient } from '@/lib/supabase/client';
 import ProjectForm, { Project } from '@/app/components/projects/ProjectForm';
 
 export default function AdminPage() {
-  const supabase = createClient();
-  const router = useRouter();
+  const supabase                = createClient();
+  const router                  = useRouter();
   const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading]   = useState(true);
 
   // Estados para manejar el modal
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen]       = useState(false);
   const [editingProject, setEditingProject] = useState<Project | null>(null);
 
   // Función para obtener los proyectos de la base de datos
   async function fetchProjects() {
     setLoading(true);
     const { data, error } = await supabase.from('projects').select('*').order('created_at', { ascending: false });
+
     if (data) {
       setProjects(data as Project[]);
     }
+
     setLoading(false);
   }
 
@@ -34,10 +36,13 @@ export default function AdminPage() {
     if (editingProject) {
       // Actualizar proyecto existente
       const { error } = await supabase.from('projects').update(projectData).eq('id', editingProject.id);
+
       if (error) alert(error.message);
+
     } else {
       // Crear nuevo proyecto
       const { error } = await supabase.from('projects').insert(projectData);
+
       if (error) alert(error.message);
     }
     
@@ -50,7 +55,7 @@ export default function AdminPage() {
   // Función para manejar la eliminación de un proyecto
   const handleDelete = async (projectId: number) => {
     if (window.confirm('¿Estás seguro de que quieres eliminar este proyecto?')) {
-        const { error } = await supabase.from('projects').delete().eq('id', projectId);
+      const { error } = await supabase.from('projects').delete().eq('id', projectId);
         if (error) {
             alert(error.message);
         } else {
