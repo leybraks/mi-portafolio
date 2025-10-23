@@ -60,8 +60,8 @@ export default function ProjectForm({ initialData, onSubmit, onClose }: ProjectF
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input name="title" value={project.title} onChange={handleChange} placeholder="Título" className="bg-slate-700 p-2 rounded text-white" required />
             <input name="imageUrl" value={project.imageUrl} onChange={handleChange} placeholder="URL de la Imagen" className="bg-slate-700 p-2 rounded text-white" required />
-            <input name="liveUrl" value={project.liveUrl} onChange={handleChange} placeholder="URL Demo en Vivo" className="bg-slate-700 p-2 rounded text-white" required />
-            <input name="codeUrl" value={project.codeUrl} onChange={handleChange} placeholder="URL Código Fuente" className="bg-slate-700 p-2 rounded text-white" required />
+            <input name="liveUrl" value={project.liveUrl} onChange={handleChange} placeholder="URL Demo en Vivo" className="bg-slate-700 p-2 rounded text-white" />
+            <input name="codeUrl" value={project.codeUrl} onChange={handleChange} placeholder="URL Código Fuente" className="bg-slate-700 p-2 rounded text-white" />
           </div>
           <textarea name="description" value={project.description} onChange={handleChange} placeholder="Descripción" className="w-full bg-slate-700 p-2 rounded mt-4 text-white" rows={3} required></textarea>
           <input name="tags" value={project.tags.join(', ')} onChange={handleTagsChange} placeholder="Tags (separados por comas)" className="w-full bg-slate-700 p-2 rounded mt-4 text-white" />

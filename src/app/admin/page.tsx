@@ -73,7 +73,8 @@ export default function AdminPage() {
   if (loading) return <p className="text-white text-center p-8">Cargando proyectos...</p>;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white p-8">
+    
+    <div className="min-h-screen bg-slate-950 text-white px-8 pb-8 pt-24">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">Admin Dashboard</h1>
@@ -97,8 +98,8 @@ export default function AdminPage() {
               {projects.map((project) => (
                 <tr key={project.id}>
                   <td className="px-5 py-5 border-b border-slate-800 text-sm">{project.title}</td>
-                  // LÍNEA CORREGIDA
                   <td className="px-5 py-5 border-b border-slate-800 text-sm">
+                    {/* Esta es la línea que corregimos antes */}
                     {project.description ? `${project.description.substring(0, 50)}...` : 'Sin descripción'}
                   </td>
                   <td className="px-5 py-5 border-b border-slate-800 text-sm">
